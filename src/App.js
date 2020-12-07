@@ -8,7 +8,8 @@ import Login from './Components/Auth/Login';
 import Profile from './Components/Auth/Profile';
 import PrivateRoute from './Components/Auth/PrivateRoute'
 import ForgotPassword from './Components/Auth/ForgotPassword';
-import UpdateProfilee from './Components/Auth/UpdateProfile';
+import UpdateProfile from './Components/Auth/UpdateProfile';
+import SideBar from './Components/Chat/SideBar';
 
 
 function App() {
@@ -18,12 +19,12 @@ function App() {
           <Router>
              <AuthProvider>
                <Switch>
-                 <Route exact path='/' component={Main}/>
+                 <PrivateRoute exact path='/' component={Main}/>
                  <Route path='/SignUp' component={SignUp}/>
                  <Route path='/Login' component={Login}/>
                  <PrivateRoute path='/Profile' component={Profile}/>
                  <Route path='/forgot-password' component={ForgotPassword}/>
-                 <PrivateRoute path='/update-profile' component={UpdateProfilee}/>
+                 <PrivateRoute path='/update-profile' component={UpdateProfile}/>
                </Switch>
              </AuthProvider>
           </Router>

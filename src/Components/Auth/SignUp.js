@@ -11,6 +11,7 @@ export default function SignUp() {
   const { signup } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+  const [show, setShow] = useState(false);
   const history = useHistory()
 
   async function handleSubmit(e) {
@@ -31,6 +32,9 @@ export default function SignUp() {
 
     setLoading(false)
   }
+  function helpShowAlert(e){
+    setShow(true);
+  }
 
   return (
     <>
@@ -47,10 +51,10 @@ export default function SignUp() {
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
-            <Form.Group id="password">
+            <Form.Group onSelect={helpShowAlert} id="password">
               <Form.Label>Password </Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
-              <Alert variant="secondary" className='mt-1' >Password mast be at least 6 characters</Alert>
+              <Alert show={show} variant="secondary" className='mt-1' >Password mast be at least 6 characters</Alert>
             </Form.Group>
             <Form.Group id="password-confirm">
               <Form.Label>Password Confirmation</Form.Label>
